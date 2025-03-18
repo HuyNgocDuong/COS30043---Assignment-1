@@ -1,21 +1,29 @@
 <template>
   <div id="app">
-    <EventTable />
+    <HeaderSection />
+    <WhyChooseUs />
   </div>
 </template>
 
 <script>
-// Import your EventTable component
-import EventTable from './components/EventTable.vue';
+// Import the Header and Why Choose Us components
+import HeaderSection from './components/HeaderSection.vue';
+import WhyChooseUs from './components/WhyChooseUs.vue';
 
 export default {
   name: 'App',
   components: {
-    EventTable
+    HeaderSection,
+    WhyChooseUs
   }
 };
 </script>
 
 <style>
-/* Global styles */
+/* Global styles (optional) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 </style>
