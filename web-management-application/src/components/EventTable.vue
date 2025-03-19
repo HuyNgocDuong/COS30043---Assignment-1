@@ -1,56 +1,70 @@
 <template>
-  <div>
-    <h1>Event Information</h1>
+  <div class="container mt-4">
+    <div class="card shadow-lg p-4">
+      <h2 class="fw-bold">Events</h2>
 
-    <!-- Search Filters -->
-    <div>
-      <label for="eventId">Search by Event ID:</label>
-      <input v-model="filters.eventId" type="text" id="eventId" placeholder="Search Event ID">
-
-      <label for="eventName">Search by Event Name:</label>
-      <input v-model="filters.eventName" type="text" id="eventName" placeholder="Search Event Name">
-
-      <label for="duration">Search by Duration (hours):</label>
-      <input v-model="filters.duration" type="number" id="duration" placeholder="Search Duration" min="0">
-
-      <div>
-        <label>
-          <input type="radio" v-model="filters.category" value="All" /> All
-        </label>
-        <label>
-          <input type="radio" v-model="filters.category" value="Technology" /> Technology
-        </label>
-        <label>
-          <input type="radio" v-model="filters.category" value="Business" /> Business
-        </label>
-        <label>
-          <input type="radio" v-model="filters.category" value="Marketing" /> Marketing
-        </label>
-        <label>
-          <input type="radio" v-model="filters.category" value="Finance" /> Finance
-        </label>
+      <!-- Search Filters -->
+      <div class="row g-2 mb-3">
+        <div class="col-md-4">
+          <input v-model="filters.eventId" type="text" class="form-control" placeholder="Search by ID">
+        </div>
+        <div class="col-md-4">
+          <input v-model="filters.eventName" type="text" class="form-control" placeholder="Search by Name">
+        </div>
+        <div class="col-md-4">
+          <input v-model="filters.duration" type="number" class="form-control" placeholder="Search by Duration" min="0">
+        </div>
       </div>
-    </div>
 
-    <!-- Event Table -->
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Event ID</th>
-          <th>Event Name</th>
-          <th>Category</th>
-          <th>Duration Hours</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="event in filteredEvents" :key="event.eventId">
-          <td>{{ event.eventId }}</td>
-          <td>{{ event.eventName }}</td>
-          <td>{{ event.category }}</td>
-          <td>{{ event.duration }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- Category Filters (Now Fully Responsive) -->
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="btn-group d-flex flex-wrap gap-2 justify-content-center">
+            <input type="radio" class="btn-check" id="all" value="All" v-model="filters.category">
+            <label class="btn btn-outline-dark fw-bold flex-fill" for="all">All</label>
+
+            <input type="radio" class="btn-check" id="technology" value="Technology" v-model="filters.category">
+            <label class="btn btn-outline-dark fw-bold flex-fill" for="technology">Technology</label>
+
+            <input type="radio" class="btn-check" id="business" value="Business" v-model="filters.category">
+            <label class="btn btn-outline-dark fw-bold flex-fill" for="business">Business</label>
+
+            <input type="radio" class="btn-check" id="marketing" value="Marketing" v-model="filters.category">
+            <label class="btn btn-outline-dark fw-bold flex-fill" for="marketing">Marketing</label>
+
+            <input type="radio" class="btn-check" id="finance" value="Finance" v-model="filters.category">
+            <label class="btn btn-outline-dark fw-bold flex-fill" for="finance">Finance</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Table (Still Responsive & Aligned) -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Event ID</th>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Duration (Hours)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="event in filteredEvents" :key="event.eventId">
+                  <td>{{ event.eventId }}</td>
+                  <td>{{ event.eventName }}</td>
+                  <td>{{ event.category }}</td>
+                  <td>{{ event.duration }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -60,29 +74,28 @@ export default {
     return {
       // Sample event data
       events: [
-        { eventId: 'E001', eventName: 'Tech Summit', category: 'Technology', duration: 5 },
-        { eventId: 'E002', eventName: 'Business Workshop', category: 'Business', duration: 3 },
-        { eventId: 'E003', eventName: 'Marketing Conference', category: 'Marketing', duration: 2 },
-        { eventId: 'E004', eventName: 'Finance Symposium', category: 'Finance', duration: 6 },
-        { eventId: 'E005', eventName: 'AI Expo', category: 'Technology', duration: 4 }
+        { eventId: "1", eventName: "Tech Conference 2024", category: "Technology", duration: 8 },
+        { eventId: "2", eventName: "Startup Summit", category: "Business", duration: 6 },
+        { eventId: "3", eventName: "Digital Marketing Workshop", category: "Marketing", duration: 4 },
+        { eventId: "4", eventName: "Investment Symposium", category: "Finance", duration: 5 },
+        { eventId: "5", eventName: "Cloud Computing Seminar", category: "Technology", duration: 3 },
+        { eventId: "6", eventName: "Leadership Forum", category: "Business", duration: 7 }
       ],
       filters: {
-        eventId: '',
-        eventName: '',
-        duration: '',
-        category: 'All' // Default category is "All"
+        eventId: "",
+        eventName: "",
+        duration: "",
+        category: "All"
       }
     };
   },
   computed: {
-    // Filtered events based on the search criteria
     filteredEvents() {
       return this.events.filter(event => {
         const matchesEventId = event.eventId.toLowerCase().includes(this.filters.eventId.toLowerCase());
         const matchesEventName = event.eventName.toLowerCase().includes(this.filters.eventName.toLowerCase());
         const matchesDuration = this.filters.duration ? event.duration == this.filters.duration : true;
-        const matchesCategory = this.filters.category === 'All' || event.category === this.filters.category;
-
+        const matchesCategory = this.filters.category === "All" || event.category === this.filters.category;
         return matchesEventId && matchesEventName && matchesDuration && matchesCategory;
       });
     }
@@ -91,22 +104,36 @@ export default {
 </script>
 
 <style scoped>
-/* Add your styles here */
-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
+/* Container Card Styling */
+.card {
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
+/* Make category buttons wrap on smaller screens */
+.btn-group {
+  flex-wrap: wrap;
 }
 
-input[type="text"],
-input[type="number"] {
-  padding: 5px;
-  margin: 5px;
+/* Improve table aesthetics */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Style radio buttons as Bootstrap buttons */
+.btn-check:checked + .btn {
+  background-color: #000;
+  color: white;
+  border-color: #000;
 }
 </style>

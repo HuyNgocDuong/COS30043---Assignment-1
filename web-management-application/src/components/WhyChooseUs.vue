@@ -4,8 +4,8 @@
     <div class="row g-4 justify-content-center">
       <div v-for="(item, index) in features" :key="index" class="col-12 col-sm-6 col-lg-4 d-flex">
         <div class="feature-card w-100">
-          <div class="feature-icon mb-3">
-            <span v-html="item.icon"></span>
+          <div class="feature-icon mb-3" :style="{ color: item.color }">
+            <font-awesome-icon :icon="item.icon" />
           </div>
           <h4 class="feature-title mb-3">{{ item.title }}</h4>
           <p class="feature-description mb-0">{{ item.description }}</p>
@@ -16,17 +16,26 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCalendarAlt, faUsers, faTrophy, faChartLine, faHourglassHalf, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCalendarAlt, faUsers, faTrophy, faChartLine, faHourglassHalf, faShieldAlt);
+
 export default {
   name: "WhyChooseUs",
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       features: [
-        { icon: "\uD83D\uDCC5", title: "Expert Planning", description: "Professional event planners with years of experience" },
-        { icon: "\uD83D\uDC65", title: "Dedicated Team", description: "Committed staff ensuring smooth event execution" },
-        { icon: "\uD83C\uDFC6", title: "Track Record", description: "Successfully managed hundreds of corporate events" },
-        { icon: "\uD83D\uDCCA", title: "Data-Driven", description: "Analytics-backed decision making for optimal results" },
-        { icon: "⏳", title: "Time Management", description: "Punctual delivery and efficient scheduling" },
-        { icon: "\uD83D\uDEE1", title: "Risk Management", description: "Comprehensive contingency planning" }
+        { icon: ['fas', 'calendar-alt'], title: "Expert Planning", description: "Professional event planners with years of experience", color: "#ff5733" },
+        { icon: ['fas', 'users'], title: "Dedicated Team", description: "Committed staff ensuring smooth event execution", color: "#33c3ff" },
+        { icon: ['fas', 'trophy'], title: "Track Record", description: "Successfully managed hundreds of corporate events", color: "#ffd700" },
+        { icon: ['fas', 'chart-line'], title: "Data-Driven", description: "Analytics-backed decision making for optimal results", color: "#28a745" },
+        { icon: ['fas', 'hourglass-half'], title: "Time Management", description: "Punctual delivery and efficient scheduling", color: "#ff8c00" },
+        { icon: ['fas', 'shield-alt'], title: "Risk Management", description: "Comprehensive contingency planning", color: "#6c757d" }
       ]
     };
   }
@@ -52,9 +61,8 @@ export default {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.feature-icon span {
+.feature-icon {
   font-size: 2.5rem;
-  display: block;
 }
 
 .feature-title {
@@ -74,7 +82,7 @@ export default {
     padding: 1.5rem;
   }
   
-  .feature-icon span {
+  .feature-icon {
     font-size: 2rem;
   }
 }

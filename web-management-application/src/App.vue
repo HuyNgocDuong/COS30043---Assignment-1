@@ -2,19 +2,21 @@
   <div id="app">
     <HeaderSection />
     <WhyChooseUs />
+    <EventTable />
   </div>
 </template>
 
 <script>
-// Import the Header and Why Choose Us components
+// Import components
 import HeaderSection from './components/HeaderSection.vue';
 import WhyChooseUs from './components/WhyChooseUs.vue';
-
+import EventTable from './components/EventTable.vue';
 export default {
   name: 'App',
   components: {
     HeaderSection,
-    WhyChooseUs
+    WhyChooseUs,
+    EventTable
   }
 };
 </script>
