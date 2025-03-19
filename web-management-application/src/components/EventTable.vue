@@ -74,12 +74,26 @@ export default {
     return {
       // Sample event data
       events: [
-        { eventId: "1", eventName: "Tech Conference 2024", category: "Technology", duration: 8 },
-        { eventId: "2", eventName: "Startup Summit", category: "Business", duration: 6 },
-        { eventId: "3", eventName: "Digital Marketing Workshop", category: "Marketing", duration: 4 },
-        { eventId: "4", eventName: "Investment Symposium", category: "Finance", duration: 5 },
-        { eventId: "5", eventName: "Cloud Computing Seminar", category: "Technology", duration: 3 },
-        { eventId: "6", eventName: "Leadership Forum", category: "Business", duration: 7 }
+        {eventId: '1', eventName: 'Tech Innovations Conference', category: 'Technology', duration: 8},
+        {eventId: '2', eventName: 'Startup Pitch Day', category: 'Business', duration: 6},
+        {eventId: '3', eventName: 'AI & Machine Learning Summit', category: 'Technology', duration: 10},
+        {eventId: '4', eventName: 'Cybersecurity Workshop', category: 'Technology', duration: 4},
+        {eventId: '5', eventName: 'Digital Marketing Bootcamp', category: 'Marketing', duration: 6},
+        {eventId: '6', eventName: 'Blockchain and Cryptocurrency', category: 'Finance', duration: 5},
+        {eventId: '7', eventName: 'Entrepreneurship Forum', category: 'Business', duration: 7},
+        {eventId: '8', eventName: 'Data Science Hackathon', category: 'Technology', duration: 12},
+        {eventId: '9', eventName: 'Leadership and Management Summit', category: 'Business', duration: 9},
+        {eventId: '10', eventName: 'E-commerce Strategies', category: 'Marketing', duration: 6},
+        {eventId: '11', eventName: 'AI for Business', category: 'Business', duration: 8},
+        {eventId: '12', eventName: 'IoT & Smart Devices Expo', category: 'Technology', duration: 7},
+        {eventId: '13', eventName: 'Brand Strategy and Growth', category: 'Marketing', duration: 5},
+        {eventId: '14', eventName: 'Investment and Wealth Management', category: 'Finance', duration: 6},
+        {eventId: '15', eventName: 'Financial Technology (FinTech) Summit', category: 'Finance', duration: 8},
+        {eventId: '16', eventName: 'AI Ethics and Regulations', category: 'Technology', duration: 4},
+        {eventId: '17', eventName: 'Business Analytics Workshop', category: 'Business', duration: 6},
+        {eventId: '18', eventName: 'SEO and Content Marketing', category: 'Marketing', duration: 7},
+        {eventId: '19', eventName: 'Cryptocurrency Investment Strategies', category: 'Finance', duration: 9},
+        {eventId: '20', eventName: 'Social Media Marketing Trends', category: 'Marketing', duration: 5}
       ],
       filters: {
         eventId: "",
