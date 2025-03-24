@@ -64,7 +64,7 @@ export default {
       username: "",
       password: "",
       confirmPassword: "",
-      selectedCategory: "Business",
+      selectedCategory: "",
       selectedEvent: "",
       submitted: false,
       categories: ["Technology", "Business", "Marketing", "Finance"],
