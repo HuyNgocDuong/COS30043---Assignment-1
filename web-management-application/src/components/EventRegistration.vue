@@ -24,8 +24,8 @@
       <!-- Event Category -->
       <div class="form-group">
         <label class="category-label">Category</label>
-        <div class="category-options">
-          <div class="form-check form-check-inline" v-for="(category, index) in categories" :key="index">
+        <div class="d-flex flex-wrap gap-3">
+          <div class="form-check" v-for="(category, index) in categories" :key="index">
             <input class="form-check-input" type="radio" :id="category" :value="category" v-model="selectedCategory">
             <label class="form-check-label" :for="category">{{ category }}</label>
           </div>
@@ -69,14 +69,14 @@ export default {
       submitted: false,
       categories: ["Technology", "Business", "Marketing", "Finance"],
       events: [
-        { eventId: "EVT10009", eventName: "Leadership Summit", category: "Business" },
-        { eventId: "EVT10010", eventName: "E-commerce Strategies", category: "Marketing" },
-        { eventId: "EVT10011", eventName: "AI for Business", category: "Business" },
-        { eventId: "EVT10012", eventName: "IoT & Smart Devices", category: "Technology" },
-        { eventId: "EVT10013", eventName: "Brand Strategy", category: "Marketing" },
-        { eventId: "EVT10014", eventName: "Wealth Management", category: "Finance" },
-        { eventId: "EVT10015", eventName: "FinTech Summit", category: "Finance" },
-        { eventId: "EVT10016", eventName: "AI Ethics", category: "Technology" },
+        { eventId: "1", eventName: "Leadership Summit", category: "Business" },
+        { eventId: "2", eventName: "E-commerce Strategies", category: "Marketing" },
+        { eventId: "3", eventName: "AI for Business", category: "Business" },
+        { eventId: "4", eventName: "IoT & Smart Devices", category: "Technology" },
+        { eventId: "5", eventName: "Brand Strategy", category: "Marketing" },
+        { eventId: "6", eventName: "Wealth Management", category: "Finance" },
+        { eventId: "7", eventName: "FinTech Summit", category: "Finance" },
+        { eventId: "8", eventName: "AI Ethics", category: "Technology" },
       ],
     };
   },
@@ -125,13 +125,19 @@ label {
   border-radius: 6px;
 }
 
-.category-options {
+.d-flex {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.gap-3 {
   gap: 15px;
 }
 
-.form-check-input {
-  margin-top: 5px;
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .btn-dark {

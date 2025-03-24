@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <!-- Category Filters (Now Fully Responsive) -->
+      <!-- Category Filters  -->
       <div class="row mb-3">
         <div class="col-12">
           <div class="btn-group d-flex flex-wrap gap-2 justify-content-center">
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <!-- Event Table (Still Responsive & Aligned) -->
+      <!-- Event Table  -->
       <div class="row">
         <div class="col-md-12">
           <div class="table-responsive">
