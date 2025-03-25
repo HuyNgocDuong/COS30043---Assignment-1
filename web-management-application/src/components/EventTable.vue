@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-4">
     <div class="card shadow-lg p-4">
-      <h2 class="fw-bold">Events</h2>
+      <h2 class="fw-bold text-center">Event Information</h2>
 
       <!-- Search Filters -->
       <div class="row g-2 mb-3">
@@ -106,9 +106,13 @@ export default {
   computed: {
     filteredEvents() {
       return this.events.filter(event => {
+        //Check if the event ID includes the filter values
         const matchesEventId = event.eventId.toLowerCase().includes(this.filters.eventId.toLowerCase());
+        //Check if the event name includes the filter values 
         const matchesEventName = event.eventName.toLowerCase().includes(this.filters.eventName.toLowerCase());
+        //Check if the duration matches the filter
         const matchesDuration = this.filters.duration ? event.duration == this.filters.duration : true;
+        //Check if the category matches the filter
         const matchesCategory = this.filters.category === "All" || event.category === this.filters.category;
         return matchesEventId && matchesEventName && matchesDuration && matchesCategory;
       });
@@ -117,7 +121,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /* Container Card Styling */
 .card {
   border-radius: 12px;

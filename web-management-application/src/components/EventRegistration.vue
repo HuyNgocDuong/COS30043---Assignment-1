@@ -1,58 +1,60 @@
 <template>
   <div class="registration-container">
-    <h2 class="text-center">Event Registration</h2>
-    <form @submit.prevent="submitForm">
-      <!-- Username -->
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="username" class="form-control" required>
-      </div>
-
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" class="form-control" required>
-      </div>
-
-      <!-- Confirm Password -->
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="confirmPassword" class="form-control" required>
-        <small v-if="passwordMismatch" class="text-danger">Passwords do not match</small>
-      </div>
-
-      <!-- Event Category -->
-      <div class="form-group">
-        <label class="category-label">Category</label>
-        <div class="d-flex flex-wrap gap-3">
-          <div class="form-check" v-for="(category, index) in categories" :key="index">
-            <input class="form-check-input" type="radio" :id="category" :value="category" v-model="selectedCategory">
-            <label class="form-check-label" :for="category">{{ category }}</label>
+    <div card shadow-lg p-4>
+        <h2 class="text-center fw-bold">Event Registration</h2>
+        <form @submit.prevent="submitForm">
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" v-model="username" class="form-control" required>
           </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" v-model="password" class="form-control" required>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" v-model="confirmPassword" class="form-control" required>
+            <small v-if="passwordMismatch" class="text-danger">Passwords do not match</small>
+          </div>
+
+          <!-- Event Category -->
+          <div class="form-group">
+            <label class="category-label">Category</label>
+            <div class="d-flex flex-wrap gap-3">
+              <div class="form-check" v-for="(category, index) in categories" :key="index">
+                <input class="form-check-input" type="radio" :id="category" :value="category" v-model="selectedCategory">
+                <label class="form-check-label" :for="category">{{ category }}</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event Name Dropdown -->
+          <div class="form-group">
+            <label for="eventName">Event</label>
+            <select id="eventName" v-model="selectedEvent" class="form-select">
+              <option value="" disabled>Select an event</option>
+              <option v-for="event in filteredEvents" :key="event.eventId" :value="event.eventName">
+                {{ event.eventName }}
+              </option>
+            </select>
+          </div>
+                          
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-dark w-100">Register</button>
+        </form>
+
+        <!-- Summary Message -->
+        <div v-if="submitted" class="alert alert-success mt-4">
+          <h4>Registration Summary</h4>
+          <p><strong>Username:</strong> {{ username }}</p>
+          <p><strong>Selected Category:</strong> {{ selectedCategory }}</p>
+          <p><strong>Selected Event:</strong> {{ selectedEvent }}</p>
         </div>
-      </div>
-
-      <!-- Event Name Dropdown -->
-      <div class="form-group">
-        <label for="eventName">Event</label>
-        <select id="eventName" v-model="selectedEvent" class="form-select">
-          <option value="" disabled>Select an event</option>
-          <option v-for="event in filteredEvents" :key="event.eventId" :value="event.eventName">
-            {{ event.eventName }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="btn btn-dark w-100">Register</button>
-    </form>
-
-    <!-- Summary Message -->
-    <div v-if="submitted" class="alert alert-success mt-4">
-      <h4>Registration Summary</h4>
-      <p><strong>Username:</strong> {{ username }}</p>
-      <p><strong>Selected Category:</strong> {{ selectedCategory }}</p>
-      <p><strong>Selected Event:</strong> {{ selectedEvent }}</p>
     </div>
   </div>
 </template>
@@ -97,19 +99,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .registration-container {
   max-width: 500px;
   margin: 40px auto;
   padding: 20px;
-  background: white;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   margin-bottom: 20px;
-  font-weight: bold;
 }
 
 .form-group {

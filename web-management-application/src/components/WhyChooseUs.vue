@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .feature-card {
   background: white;
   border-radius: 10px;

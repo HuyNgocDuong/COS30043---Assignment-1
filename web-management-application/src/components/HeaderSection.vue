@@ -5,7 +5,7 @@
       <p>Creating unforgettable experiences through meticulous planning and flawless execution</p>
     </div>
   </header>
-</template>
+</template> 
 
 <script>
 export default {
@@ -13,7 +13,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .header {
   background: url('@/assets/banner.png') center/cover no-repeat;
   height: 60vh;
