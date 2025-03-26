@@ -122,7 +122,6 @@ export default {
 </script>
 
 <style>
-/* Container Card Styling */
 .card {
   border-radius: 12px;
   background-color: #ffffff;
@@ -134,7 +133,6 @@ export default {
   flex-wrap: wrap;
 }
 
-/* Improve table aesthetics */
 .table-responsive {
   overflow-x: auto;
 }
@@ -148,7 +146,6 @@ th {
   text-transform: uppercase;
 }
 
-/* Style radio buttons as Bootstrap buttons */
 .btn-check:checked + .btn {
   background-color: #000;
   color: white;
