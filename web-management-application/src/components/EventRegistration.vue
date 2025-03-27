@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="registration-container">
     <div card shadow-lg p-4>
         <h2 class="text-center fw-bold">Event Registration</h2>
