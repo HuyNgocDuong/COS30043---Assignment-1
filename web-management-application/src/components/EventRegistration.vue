@@ -27,11 +27,20 @@
             <label class="category-label">Category</label>
             <div class="d-flex flex-wrap gap-3">
               <div class="form-check" v-for="(category, index) in categories" :key="index">
-                <input class="form-check-input" type="radio" :id="category" :value="category" v-model="selectedCategory">
+                <input 
+                  class="form-check-input" 
+                  type="radio" 
+                  :id="category" 
+                  :value="category" 
+                  v-model="selectedCategory"
+                >
                 <label class="form-check-label" :for="category">{{ category }}</label>
               </div>
             </div>
+            <!-- Show validation error if no category is selected -->
+            <small v-if="categoryError" class="text-danger">Please select a category.</small>
           </div>
+
 
           <!-- Event Name Dropdown -->
           <div class="form-group">
@@ -69,6 +78,7 @@ export default {
       selectedCategory: "",
       selectedEvent: "",
       submitted: false,
+      categoryError: false, // Track category validation
       categories: ["Technology", "Business", "Marketing", "Finance"],
       events: [
         { eventId: "1", eventName: "Leadership Summit", category: "Business" },
@@ -91,11 +101,19 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      if (this.passwordMismatch) return;
-      this.submitted = true;
+  submitForm() {
+    if (this.passwordMismatch) return; // Stop submission if passwords don't match
+
+    if (!this.selectedCategory) {
+      this.categoryError = true; // Show validation error
+      return; // Stop form submission
     }
+
+    this.categoryError = false; // Clear error if category is selected
+    this.submitted = true; // Now allow form submission
   }
+}
+
 };
 </script>
 
