@@ -105,12 +105,12 @@ export default {
     if (this.passwordMismatch) return; // Stop submission if passwords don't match
 
     if (!this.selectedCategory) {
-      this.categoryError = true; // Show validation error
-      return; // Stop form submission
+      this.categoryError = true; 
+      return; 
     }
 
     this.categoryError = false; // Clear error if category is selected
-    this.submitted = true; // Now allow form submission
+    this.submitted = true; 
   }
 }
 
