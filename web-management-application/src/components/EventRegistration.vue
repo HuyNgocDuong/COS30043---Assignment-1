@@ -41,7 +41,6 @@
             <small v-if="categoryError" class="text-danger">Please select a category.</small>
           </div>
 
-
           <!-- Event Name Dropdown -->
           <div class="form-group">
             <label for="eventName">Event</label>
