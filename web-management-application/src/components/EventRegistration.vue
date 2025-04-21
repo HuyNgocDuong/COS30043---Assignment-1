@@ -50,6 +50,8 @@
                 {{ event.eventName }}
               </option>
             </select>
+            <!-- Show validation error if no event is selected -->
+            <small v-if="eventError" class="text-danger">Please select an event.</small>
           </div>
                           
           <!-- Submit Button -->
@@ -77,7 +79,8 @@ export default {
       selectedCategory: "",
       selectedEvent: "",
       submitted: false,
-      categoryError: false, // Track category validation
+      categoryError: false, 
+      eventError: false, 
       categories: ["Technology", "Business", "Marketing", "Finance"],
       events: [
         { eventId: "1", eventName: "Leadership Summit", category: "Business" },
@@ -103,6 +106,14 @@ export default {
   submitForm() {
     if (this.passwordMismatch) return; // Stop submission if passwords don't match
 
+    // Check if an event is selected
+    if (!this.selectedEvent) {
+      this.eventError = true;
+      return; 
+    }
+    this.eventError = false; 
+
+    // Check if a category is selected
     if (!this.selectedCategory) {
       this.categoryError = true; 
       return; 
